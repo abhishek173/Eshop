@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- SEO Meta Tags -->
+    <title>Buy Electronics in Muzaffarpur - ZamZam Electric and Electronic</title>
+    <meta name="description" content="ZamZam Electric and Electronic - Your trusted electronics store in Muzaffarpur, Bihar. Shop top-quality electrical and electronic products at the best prices." />
+    <meta name="keywords" content="electronics store Muzaffarpur, buy electronics, electrical appliances, best electronics shop Bihar, sonu shop, ZamZam Electric and Electronic" />
+    <meta name="author" content="Sonu" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags (For Social Media Preview) -->
+    <meta property="og:title" content="Buy Electronics in Muzaffarpur - ZamZam Electric and Electronic" />
+    <meta property="og:description" content="Shop high-quality electronic products at ZamZam Electric and Electronic, Muzaffarpur's trusted store." />
+    <meta property="og:url" content="https://zamzamelectronics.in/" />
+    <meta property="og:site_name" content="ZamZam Electric and Electronic" />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:image" content="https://zamzamelectronics.in/static/logo.jpeg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Buy Electronics in Muzaffarpur - ZamZam Electric and Electronic" />
+    <meta name="twitter:description" content="Find the best electrical and electronic products at ZamZam Electric and Electronic, Muzaffarpur." />
+    <meta name="twitter:image" content="https://zamzamelectronics.in/static/logo.jpeg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'logo.jpeg' %}" type="image/jpeg" />
+
+    <!-- Schema.org Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ElectronicsStore",
+        "name": "ZamZam Electric and Electronic",
+        "image": "https://zamzamelectronics.in/static/logo.jpeg",
+        "url": "https://zamzamelectronics.in/",
+        "telephone": "+91-XXXXXXXXXX",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "XYZ Road, Near ABC Landmark",
+            "addressLocality": "Muzaffarpur",
+            "addressRegion": "Bihar",
+            "postalCode": "842001",
+            "addressCountry": "IN"
+        },
+        "openingHours": "Mo-Sa 09:00-21:00",
+        "owner": {
+            "@type": "Person",
+            "name": "Sonu"
+        }
+    }
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"/>
+   
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- Custom Styles -->
+    <style>
+      html,body {
+            background: linear-gradient(to bottom right, #d9e4f5, #f9f9f9);
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+          flex: 1; /* Makes the content take up available space, pushing the footer down */
+      }
+      
+
+        .form-card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .top-nav {
+            background-color: #133038;
+        }
+
+        .one-edge-shadow {
+            box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
+        }
+
+        .display-8 {
+            font-weight: 200;
+            font-size: 30px;
+            color: teal;
+        }
+
+        footer {
+            background-color: #133038;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        footer a {
+            color: #f8f9fa;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #28a745;
+        }
+
+        /* Centered content */
+        .center-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+
+  <body>
+    <!-- navbar -->
+
+    <nav
+      class="top-nav one-edge-shadow navbar navbar-light sticky-top navbar navbar-expand-lg text-white"
+    >
+      <a class="navbar-brand ms-3 text-light" href="/">
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+          crossorigin="anonymous"
+        />
+
+        {% comment %} <img
+          src="{% static 'logo.jpeg' %}"
+          style="width:50px;height:50px,color:text-light;margin-right:10px;"
+        />ZamZam Electric and Electronic</a
+      > {% endcomment %}
+
+        <img
+        src="{% static 'logo.jpeg' %}"
+        style="width:50px;height:40px;color:text-light;margin-right:10px;"/>
+          <span class="d-none d-md-inline">ZamZam Electric and Electronics</span>
+          <span class="d-inline d-md-none">ZZ Electronics</span>
+        </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+         
+        </ul>
+
+        <ul class="navbar-nav my-2 my-lg-0">
+          
+          {% if request.session.customer %}
+
+
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/order/cart">
+                <i class="bi bi-cart"></i> <!-- Bootstrap cart icon -->
+                <span class="badge badge-success">{{ cart_item_count }}</span>
+                <span class="sr-only">(current)</span>
+            </a>
+        </li>
+          
+
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/orders"
+              >Orders<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/logout"
+              >Logout<span class="sr-only">(current)</span></a
+            >
+          </li>
+          {% else %}
+
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/signup"
+              >Signup<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/login"
+              >Login<span class="sr-only">(current)</span></a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <!---->
+
+    <div class="content-wrapper">
+      {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+      <div class="container mt-auto">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>
+              Want to Repair Your Product ? <a href="#" data-toggle="modal" data-target="#repairRequestModal">Click Here</a>
+            </p>
+            <p>© 2024 Zam Zam Electric and Electronic | All Rights Reserved</p>
+            <p>
+              <a href="/privacy-policy/">Privacy Policy</a> | <a href="/terms-of-service/">Terms of Service</a> | <a href="{% url 'cancellation_refund' %}" class="text-light">Cancellation & Refund</a> |
+              <a href="{% url 'shipping_delivery' %}" class="text-light">Shipping & Delivery</a>
+            </p>
+            <p>
+              Follow us:
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </footer> 
+
+  
+    <!-- Repair Request Modal -->
+    <div class="modal fade" id="repairRequestModal" tabindex="-1" role="dialog" aria-labelledby="repairRequestModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="repairRequestModalLabel">Repair Request Form</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="repairRequestForm" method="post" action="submit-repair-request/">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="product-name">Product Name</label>
+                <input type="text" class="form-control" id="product-name" name="product_name" required aria-describedby="productHelp">
+                <small id="productHelp" class="form-text text-muted">Enter the name of the product you wish to repair.</small>
+              </div>
+              <div class="form-group">
+                <label for="description">Description of the Issue</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required aria-describedby="descriptionHelp"></textarea>
+                <small id="descriptionHelp" class="form-text text-muted">Describe the issue in detail.</small>
+              </div>
+              <div class="form-group">
+                <label for="contact-info">Contact Information</label>
+                <input type="text" class="form-control" id="contact-info" name="contact_info" required aria-describedby="contactHelp">
+                <small id="contactHelp" class="form-text text-muted">Your email or phone number for us to contact you.</small>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>

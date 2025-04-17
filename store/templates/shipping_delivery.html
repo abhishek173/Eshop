@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Shipping and Delivery Policy</h2>
+    <hr>
+    
+    <h4>1. Shipping Policy</h4>
+    <p>
+        We strive to deliver your orders in a timely manner. Orders are processed within **12-24 hours** after payment confirmation. 
+        Shipping times may vary depending on the destination.
+    </p>
+
+    <h4>2. Delivery Time</h4>
+    <p>
+        Estimated delivery time:
+    </p>
+    <ul>
+        <li>Local Delivery: **2-3 business days**</li>
+        {% comment %} <li>National Shipping: **5-10 business days**</li>
+        <li>International Shipping: **10-20 business days**</li> {% endcomment %}
+    </ul>
+
+    <h4>3. Shipping Charges</h4>
+    <p>
+        Shipping charges are calculated at checkout based on the weight, dimensions, and destination of your order. 
+        Free shipping is available on orders above **₹5000**.
+    </p>
+
+    <h4>4. Tracking Your Order</h4>
+    <p>
+        Once your order is shipped, you will receive a tracking number via email. You can track your shipment 
+        on our <a href="/orders">Track Order</a> page.
+    </p>
+
+    <h4>5. Delayed or Lost Shipments</h4>
+    <p>
+        If your order is delayed beyond the estimated delivery date, please reach out to us at 
+        <a href="/contact">Contact Us</a>. We will assist you in locating your package.
+    </p>
+
+    <h4>6. Contact Us</h4>
+    <p>
+        If you have any questions about our Shipping and Delivery Policy, please <a href="/contact">contact us</a>.
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+
+<div class="container my-5">
+    <div class="border rounded-4 p-4 shadow-lg bg-white">
+        <h2 class="fw-bold text-center text-success">🛒 Your Cart</h2>
+        <hr class="mb-4">
+        
+        {% if cart.cart_items.all %}
+            <table class="table table-hover align-middle">
+                <thead class="table-success">
+                    <tr>
+                        <th class="text-center">S.No</th>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th class="text-center">Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart.cart_items.all %}
+                    <tr>
+                        <td class="text-center">{{ forloop.counter }}</td>
+                        <td>
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" class="rounded-3 border" style="height: 80px; width: 80px; object-fit: cover;" alt="">
+                            {% else %}
+                                <div class="bg-light border rounded-3 d-flex align-items-center justify-content-center" style="height: 80px; width: 80px;">
+                                    <span class="text-muted">No Image</span>
+                                </div>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <h6 class="fw-bold">{{ item.product.name }}</h6>
+                            <div class="d-flex align-items-center mt-2">
+                                <a href="/order/remove-cart-item/?product_id={{ item.product.id }}" class="btn btn-outline-danger btn-sm rounded-circle">
+                                    <i class="fas fa-minus"></i>
+                                </a>
+                                <span class="mx-3 fw-bold">{{ item.quantity }}</span>
+                                <a href="/order/add-to-cart/?product_id={{ item.product.id }}" class="btn btn-outline-success btn-sm rounded-circle">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </td>
+                        <td>{{ item.product.price|currency }}</td>
+                        <td class="text-center">{{ item.quantity }}</td>
+                        <td>{{ item.getCartItemTotal|currency }}</td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot class="table-light">
+                    <tr>
+                        <th colspan="4"></th>
+                        <th class="text-end">Total:</th>
+                        <th class="text-success fw-bold">{{ cart.getCartTotal|currency }}</th>
+                    </tr>
+                </tfoot> 
+            </table>
+
+            <hr>
+            <div class="text-end">
+                <button class="btn btn-success btn-lg px-4 rounded-pill shadow-sm" id="rzp-button1">
+                    <i class="fas fa-credit-card"></i> Pay Now
+                </button>
+            </div>
+        {% else %}
+            <div class="text-center p-5">
+                <h4 class="text-muted">Your cart is empty.</h4>
+                <a href="{% url 'homepage' %}" class="btn btn-primary btn-lg mt-3 rounded-pill">
+                    <i class="fas fa-shopping-cart me-2"></i> Start Shopping
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+  
+<script>
+  var options = {
+      "key": "rzp_test_YoSF9bPrSTjTSC", // Replace with your actual Razorpay test/live key
+      "amount": "{{ cart.getCartTotal }}", // Convert to paise
+      "currency": "INR",
+      "name": "zamzamelectronics", // Your business name
+      "description": "Paying for purchase items",
+      "order_id": "{{ payment_info.id }}", // Ensure this value is passed from Django
+      "callback_url": "{{ request.scheme }}://{{ request.get_host }}/order/success/?order_id={{ payment_info.id }}", // Dynamic domain
+      "theme": {
+          "color": "#3399cc"
+      }
+  };
+  
+  var rzp1 = new Razorpay(options);
+  document.getElementById('rzp-button1').onclick = function(e){
+      rzp1.open();
+      e.preventDefault();
+  }
+</script>
+
+
+{% endblock %}
+
+{% comment %} "callback_url": "https://zamzamelectronics.in/order/success/?order_id={{ payment_info.id }}", // ✅ Production URL {% endcomment %}
+
+{% comment %} "callback_url": "http://127.0.0.1:8000/order/success/?order_id={{payment_info.id}}", // Replace with your actual callback URL {% endcomment %}

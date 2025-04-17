@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-5 text-center border-0 rounded-4" style="max-width: 500px;">
+        <!-- Success Animation -->
+        <div class="checkmark-circle">
+            <div class="background"></div>
+            <div class="checkmark draw"></div>
+        </div>
+
+        <h2 class="text-success mt-4 fw-bold">Payment Successful!</h2>
+        <p class="text-muted">Your payment has been processed successfully.</p>
+        <p class="text-muted">Thank you for shopping with us!</p>
+
+        <!-- Button to go back to shop -->
+        <a href="{% url 'homepage' %}" class="btn btn-success btn-lg mt-3 rounded-pill px-4 shadow-sm">
+            Continue Shopping <i class="fas fa-shopping-bag ms-2"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Success Animation Styles -->
+<style>
+    .checkmark-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #28a745;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .checkmark {
+        width: 30px;
+        height: 60px;
+        border-right: 5px solid white;
+        border-bottom: 5px solid white;
+        transform: rotate(45deg);
+        position: absolute;
+        opacity: 0;
+        animation: drawCheck 0.5s ease-in-out 0.3s forwards;
+    }
+
+    @keyframes drawCheck {
+        0% {
+            opacity: 0;
+            height: 0;
+        }
+        100% {
+            opacity: 1;
+            height: 60px;
+        }
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+{% endblock %}

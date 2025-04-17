@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<div class="container my-5">
+    <div class="border rounded-4 p-4 shadow-lg bg-white">
+        <h2 class="fw-bold text-center text-primary">Your Orders</h2>
+        <hr class="mb-4">
+
+        {% if orders %}
+            <div class="row">
+                {% for order in orders %}
+                    <div class="col-md-12 mb-4">
+                        <div class="card shadow-sm border-0 rounded-4">
+                            <div class="card-header bg-primary text-white rounded-top-4">
+                                <h5 class="mb-0">Order ID: {{ order.order_id }}</h5>
+                                <small class="d-block">Date: {{ order.date }}</small>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        {% for item in order.orderitems_set.all %}
+                                            <div class="d-flex align-items-center border-bottom py-3">
+                                                <div class="me-3">
+                                                    {% if item.product.image %}
+                                                        <img src="{{ item.product.image.url }}" class="rounded-3 border" style="height: 80px; width: 80px; object-fit: cover;" alt="">
+                                                    {% else %}
+                                                        <div class="bg-light border rounded-3 d-flex align-items-center justify-content-center" style="height: 80px; width: 80px;">
+                                                            <span class="text-muted">No Image</span>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="mx-1">
+                                                    <h6 class="fw-bold mb-1">{{ item.product.name }}</h6>
+                                                    <p class="text-muted mb-0">
+                                                        Quantity: <strong>{{ item.quantity }}</strong> &nbsp;|&nbsp;
+                                                        Price: <strong>{{ item.price|currency }}</strong>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-md-4 text-center d-flex align-items-center justify-content-center">
+                                        <div>
+                                            <h6 class="text-muted mb-2">Total Amount</h6>
+                                            <h4 class="text-success fw-bold">{{ order.total|floatformat:2 }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center p-5">
+                <h4 class="text-muted">You have no orders yet.</h4>
+                <a href="{% url 'homepage' %}" class="btn btn-primary btn-lg mt-3 rounded-pill">
+                    Start Shopping <i class="fas fa-shopping-cart ms-2"></i>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% comment %} <table class="table">
+    <thead>
+        <tr>
+            <th>Sno.</th>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody> {% endcomment %}

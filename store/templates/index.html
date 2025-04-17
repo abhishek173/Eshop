@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center align-items-center">
+
+
+        <!-- Search and Category Filter Container -->
+
+                
+                <div class="col-md-7 col-lg-6">
+                    <div class="d-flex align-items-center bg-white border rounded p-2 shadow-sm">
+
+                        <!-- 📂 Category Filter Dropdown -->
+                        <div class="ms-2">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="categoryDropdown"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ selected_category.name|default:"All" }}
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="categoryDropdown">
+                                <li><a class="dropdown-item" href="/?q={{ request.GET.q|default:'' }}">All Products</a></li>
+                                {% for category in categories %}
+                                    <li>
+                                        <a class="dropdown-item {% if selected_category and selected_category.id == category.id %}active{% endif %}" 
+                                        href="/?category={{ category.id }}&q={{ request.GET.q|default:'' }}">
+                                            {{ category.name }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+
+                        <!-- 🔍 Search Bar -->
+                        <form method="GET" action="/" class="input-group w-100">
+                            <input type="text" class="form-control border-0" id="search-box" name="q" 
+                                placeholder="Search for products..." value="{{ request.GET.q|default:'' }}">
+                            <button class="btn btn-warning text-white px-3" id="search-btn" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+
+
+                    </div>
+                </div>
+
+    </div>
+</div>
+
+<!-- 🛍️ Product Display -->
+<div class="container mt-4">
+    <div class="row">
+
+        {% for product in products %}
+        <div class="col-6 col-md-4 col-lg-3 d-flex align-items-stretch">
+            <a href="/product/{{ product.id }}" class="text-decoration-none text-dark w-100">
+                <div class="card product-card shadow-sm mb-4">
+                    
+                    <!-- Product Image -->
+                    <div class="image-container">
+                        <img class="card-img-top fixed-image" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="card-body text-center">
+                        <h6 class="card-title font-weight-bold">{{ product.name }}</h6>
+                        <p class="card-text text-success fw-bold">{{ product.price|currency }}</p>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Product Pagination">
+        <ul class="pagination justify-content-center">
+            {% if products.has_previous %}
+                <li class="page-item"><a class="page-link" href="?category={{ selected_category.id }}&q={{ request.GET.q|default:'' }}&page=1">First</a></li>
+                <li class="page-item"><a class="page-link" href="?category={{ selected_category.id }}&q={{ request.GET.q|default:'' }}&page={{ products.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            {% for n in totalPageList %}
+                <li class="page-item {% if products.number == n %}active{% endif %}">
+                    <a class="page-link" href="?category={{ selected_category.id }}&q={{ request.GET.q|default:'' }}&page={{ n }}">{{ n }}</a>
+                </li>
+            {% endfor %}
+
+            {% if products.has_next %}
+                <li class="page-item"><a class="page-link" href="?category={{ selected_category.id }}&q={{ request.GET.q|default:'' }}&page={{ products.next_page_number }}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?category={{ selected_category.id }}&q={{ request.GET.q|default:'' }}&page={{ lastpage }}">Last</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+</div>
+
+<!-- 💅 Styling -->
+<style>
+    /* 🔍 Search Box */
+    .input-group .form-control {
+        border-right: none;
+    }
+    .input-group .btn {
+        border-left: none;
+    }
+
+    /* 🖼️ Product Image Container */
+    .image-container {
+        width: 100%;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+    }
+
+    .fixed-image {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* 🎨 Product Card */
+    .product-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .product-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 📦 Pagination */
+    .pagination .page-item.active .page-link {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+    }
+
+    .pagination .page-link {
+        color: #007bff;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
