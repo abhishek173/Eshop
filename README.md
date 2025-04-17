@@ -3,4 +3,4 @@
 3. `python manage.py makemigrations`
 4. `python manage.py runserver`
 
-### Feel free to add issues
+
